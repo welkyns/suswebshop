@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//PAGINA INICIO
+Route::view('/', 'site.pages.homepage');
+//PAGINA CATEGORIA X
+Route::get('/category/{slug}', 'Site\CategoryController@show')->name('category.show');
+//PRESENTACION DEL PRODUCTO->CATEGORIA X
+Route::get('/product/{slug}', 'Site\ProductController@show')->name('product.show');
+//AÑADIR AL CARRITO
+Route::post('/product/add/cart', 'Site\ProductController@addToCart')->name('product.add.cart');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+require 'admin.php';
+Auth::routes();
