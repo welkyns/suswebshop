@@ -26,10 +26,11 @@
                     <div class="widgets-wrap d-flex justify-content-end">
                         <div class="widget-header">
                             <a href="#" class="icontext">
-                                <div class="icon-wrap icon-xs bg2 round text-secondary"><i
-                                        class="fa fa-shopping-cart"></i></div>
+                                <div class="icon-wrap icon-xs bg2 round text-secondary">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </div>
                                 <div class="text-wrap">
-                                    <small>3 items</small>
+                                    <small>{{ $cartCount }} items</small>
                                 </div>
                             </a>
                         </div>
@@ -37,13 +38,13 @@
                             <div class="widget-header">
                                 <a href="{{ route('login') }}" class="ml-3 icontext">
                                     <div class="icon-wrap icon-xs bg-primary round text-white"><i class="fa fa-user"></i></div>
-                                    <div class="text-wrap"><span>Login</span></div>
+                                    <div class="text-wrap"><span>Iniciar Sesión</span></div>
                                 </a>
                             </div>
                             <div class="widget-header">
                                 <a href="{{ route('register') }}" class="ml-3 icontext">
                                     <div class="icon-wrap icon-xs bg-success round text-white"><i class="fa fa-user"></i></div>
-                                    <div class="text-wrap"><span>Register</span></div>
+                                    <div class="text-wrap"><span>Registrarse</span></div>
                                 </a>
                             </div>
                         @else
@@ -53,10 +54,11 @@
                                         {{ Auth::user()->full_name }} <span class="caret"></span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('account.orders') }}">Pedidos</a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
+                                            {{ __('Cerrar Sesión') }}
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
